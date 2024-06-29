@@ -1,0 +1,8 @@
+<div class="movie-item">
+    <img [src]="'https://image.tmdb.org/t/p/w500'+movie.poster_path">
+    <div class="movie-details">
+        <h2>{{movie.title}}</h2>
+        <p>{{movie.overview}}</p>
+        <!-- <a [routerLink]="['/movie', movie.id]">View Details</a> -->
+    </div>
+</div>

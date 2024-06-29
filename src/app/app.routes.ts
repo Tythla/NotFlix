@@ -12,5 +12,5 @@ export const routes: Route[] = [
   { path: 'signup', component: SignupComponent },
   { path: 'choose-plan', component: ChoosePlanComponent },
   { path: 'username', component: UsernameComponent },
-  {path: 'movie-list', component:MovieListComponent},
+  { path: 'movie-list', component:MovieListComponent},
 ];
