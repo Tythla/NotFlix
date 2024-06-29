@@ -16,4 +16,8 @@ export class WelcomeComponent {
     this.router.navigate(['login']);
   }
 
+  toMovieList() {
+    this.router.navigate(['movie-list']);
+  }
+
 }
