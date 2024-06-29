@@ -1,0 +1,76 @@
+.plan-selection {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 200px;
+}
+
+.plan-selection h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.plan-selection ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.plan-selection ul li {
+    margin-bottom: 5px;
+}
+
+.plans {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.plan {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 0 10px;
+    width: 200px;
+    text-align: center;
+}
+
+.plan.basic {
+    background-color: #f8d7da;
+}
+
+.plan.standard {
+    background-color: #f5c6cb;
+}
+
+.plan.premium {
+    background-color: #f1b0b7;
+}
+
+.plan h4 {
+    margin-top: 0;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.video-quality,
+.resolution,
+.devices {
+    margin: 5px 0;
+}
+
+.next-btn {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.next-btn:hover {
+    background-color: #c9302c;
+}

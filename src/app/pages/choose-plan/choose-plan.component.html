@@ -1,7 +1,41 @@
-<h2>Choose Your Plan</h2>
-<ul>
-  <li>Basic Plan</li>
-  <li>Standard Plan</li>
-  <li>Premium Plan</li>
-</ul>
-<button type="submit">Sign Up</button>
+<div class="plan-selection">
+  <h3>Choose the plan that's right for you</h3>
+  <ul>
+    <li>✓ Watch all you want. Ad-free.</li>
+    <li>✓ Recommendations just for you.</li>
+    <li>✓ Change or cancel your plan anytime.</li>
+  </ul>
+
+  <div class="plans">
+    <div class="Name">
+      <h4>Plan</h4>
+      <p class="price">Monthly Price</p>
+      <p class="video-quality">Video Quality</p>
+      <p class="resolution">Resolution</p>
+      <p class="devices">Wathc on your TV, computer, mobile phone and tablet</p>
+    </div>
+    <div class="plan basic">
+      <h4>Basic</h4>
+      <p class="price">$9.99</p>
+      <p class="video-quality">Good</p>
+      <p class="resolution">480p</p>
+      <p class="devices">✓</p>
+    </div>
+    <div class="plan standard">
+      <h4>Standard</h4>
+      <p class="price">$15.49</p>
+      <p class="video-quality">Better</p>
+      <p class="resolution">1080p</p>
+      <p class="devices">✓</p>
+    </div>
+    <div class="plan premium">
+      <h4>Premium</h4>
+      <p class="price">$19.99</p>
+      <p class="video-quality">Best</p>
+      <p class="resolution">4K + HDR</p>
+      <p class="devices">✓</p>
+    </div>
+  </div>
+
+  <button class="next-btn" (click)="toHome()">Next</button>
+</div>

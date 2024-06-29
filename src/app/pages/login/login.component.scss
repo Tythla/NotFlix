@@ -1,3 +1,37 @@
-body{
-    background-image: url("/public/welcome.jpg");
+.background{
+    background-image: url('/welcome.jpg');
+    height: 600px;
+    text-align: center;
+}
+.login {
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 40px 80px;
+    margin:auto;
+    border-radius: 5px;
+    max-width: 300px;
+    width: 50%;
+    text-align: left;
+}
+h2{
+    color:white;
+}
+p{
+    color:white;
+}
+button {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+}
+a{
+    cursor:pointer
+}
+input{
+    background-color: rgba(0, 0, 0, 0.75);
+    color:white;
 }

@@ -1,8 +1,13 @@
-<h2>Sign Up</h2>
-<form>
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" required>
-  <label for="password">Password:</label>
-  <input type="password" id="password" name="password" required>
-  <button type="submit" (click)="toPlan()">Next</button>
-</form>
+<div class="background">
+    <div class="signup">
+        <p>STEP 1 OF 3</p>
+        <h2>Create a password to start your membership</h2>
+        <p>Just a few more steps and you're donw!</p>
+        <p>We hate paperwork, too.</p>
+        <form>
+        <input type="email" id="email" name="email" placeholder="Enter your email:" required>
+        <input type="password" id="password" name="password" placeholder="Add your password" required>
+        <button type="submit" (click)="toPlan()">Next</button>
+        </form>
+    </div>
+</div>

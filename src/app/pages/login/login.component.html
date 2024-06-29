@@ -1,12 +1,15 @@
-<h2>Login</h2>
-<form>
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" required>
-  <label for="password">Password:</label>
-  <input type="password" id="password" name="password" required>
-  <button type="submit">Login</button>
-</form>
+<div class="background">
+    <div class="login">
+        <h2>Login</h2>
+        <form>
+        <input type="email" id="email" name="email" placeholder="Email">
+        <input type="password" id="password" name="password" placeholder="Password">
+        <br>
+        <button type="submit">Login</button>
+        </form>
 
-<p>New to Notflix? <u><a (click)="toSignup()">Sign up now</a></u></p>
+        <p>New to Notflix? <u><a (click)="toSignup()">Sign up now</a></u></p>
 
-<p class="warning">This page is NOT protected by Google reCAPTCHA to ensure you're not a bot.</p>
+        <p class="warning">This page is NOT protected by Google reCAPTCHA to ensure you're not a bot.</p>    
+    </div>
+</div>
