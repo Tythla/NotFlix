@@ -1,0 +1,29 @@
+div{
+    background-image: url('/welcome.jpg');
+    display:block;
+    align-items: center;
+    height:600px;
+    text-align: center;
+}
+
+h3{
+    color:white;
+    font-size: 50px;
+    padding-top: 200px;
+}
+
+p{
+    color:white;
+    font-size: 30px;
+}
+
+button {
+    background-color: red;
+    color: white;
+    position: relative;
+    border-radius: 15px;
+    border: none;
+    height: 70px;
+    width: 200px;
+    font-size:30px
+}
