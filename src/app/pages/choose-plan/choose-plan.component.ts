@@ -12,8 +12,8 @@ export class ChoosePlanComponent {
 
   constructor(private router: Router) { };
 
-  toHome() {
-    this.router.navigate(['/']);
+  toUsername() {
+    this.router.navigate(['username']);
   }
 
 }
