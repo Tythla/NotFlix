@@ -1,7 +1,6 @@
 <div>
     <p>Now Trending</p>
-    <div *ngFor="let movie of popularMovies">
-        <h2>{{movie.title}}</h2>
-        <p>{{movie.overview}}</p>
+    <div class="movie-list">
+        <app-movie-item *ngFor="let movie of popularMovies" [movie]="movie"></app-movie-item>
     </div>
 </div>
