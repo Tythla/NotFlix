@@ -1,7 +1,11 @@
+:host{
+    width:100%;
+}
 .background{
     background-image: url('/welcome.jpg');
     height: 600px;
     text-align: center;
+    width:100%;
 }
 .login {
     background-color: rgba(0, 0, 0, 0.75);

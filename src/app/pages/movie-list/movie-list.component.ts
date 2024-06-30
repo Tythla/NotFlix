@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { TmdbService } from '../../services/tmdb.service';
 import { CommonModule } from '@angular/common';
 import { MovieItemComponent } from '../../components/movie-item/movie-item.component';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
 
 @Component({
   selector: 'app-movie-list',
   standalone: true,
-  imports: [CommonModule,MovieItemComponent],
+  imports: [CommonModule,MovieItemComponent,NavbarComponent],
   templateUrl: './movie-list.component.html',
   styleUrl: './movie-list.component.scss',
 })
