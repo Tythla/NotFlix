@@ -1,11 +1,12 @@
+import { NgStyle } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-movie-item',
   standalone: true,
-  imports: [],
+  imports: [NgStyle],
   templateUrl: './movie-item.component.html',
-  styleUrl: './movie-item.component.scss'
+  styleUrls: ['./movie-item.component.scss'],
 })
 export class MovieItemComponent {
   @Input() movie: any;

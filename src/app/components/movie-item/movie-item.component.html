@@ -1,4 +1,4 @@
-<div class="movie-item">
+<div class="movie-item" [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w500'+ movie.poster_path + ')'}">
     <img [src]="'https://image.tmdb.org/t/p/w500'+movie.poster_path">
     <div class="movie-details">
         <h2>{{movie.title}}</h2>
