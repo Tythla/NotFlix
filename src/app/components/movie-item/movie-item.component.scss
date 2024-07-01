@@ -5,29 +5,30 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 15px;
     margin: 15px 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     overflow: hidden;
-    backdrop-filter: blur(100px);
+    backdrop-filter: blur(1000px);
+    
+    
 
     &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('https://image.tmdb.org/t/p/w500{{movie.poster_path}}');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            border-radius: 10px;
-            filter: blur(10px);
-            z-index: -1;
-            /* 确保伪元素在背景层 */
-        }
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: inherit;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 10px;
+        filter: blur(10px);
+        z-index: -1;
+    }
 
     img {
         width: 150px;
@@ -51,12 +52,14 @@
         p {
             font-size: 1em;
             margin: 0;
-            color: #555;
+            color: white;
+            text-shadow: 10px;
+            border:1em;
+            border-color:black;
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
-            -webkit-line-clamp: 3;
-            /* number of lines to show */
+            -webkit-line-clamp: 5;
             -webkit-box-orient: vertical;
         }
     }
