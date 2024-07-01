@@ -11,7 +11,9 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     overflow: hidden;
     backdrop-filter: blur(1000px);
-    
+    transition: transform 0.2s;
+    transform-style: preserve-3d;
+    transform-origin: center;
     
 
     &::before {
@@ -35,7 +37,9 @@
         height: auto;
         border-radius: 10px;
         margin-right: 15px;
-        z-index: 1;
+        z-index: 2;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        transition: transform 0.2s;
     }
 
     .movie-details {
