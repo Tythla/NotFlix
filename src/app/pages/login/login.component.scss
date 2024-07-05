@@ -39,3 +39,11 @@ input{
     background-color: rgba(0, 0, 0, 0.75);
     color:white;
 }
+
+input.ng-touched.ng-invalid {
+    border: 1px solid red;
+}
+
+small {
+    color: red;
+}
