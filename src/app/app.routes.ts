@@ -5,6 +5,8 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { ChoosePlanComponent } from './pages/choose-plan/choose-plan.component';
 import { UsernameComponent } from './pages/username/username.component';
 import { MovieListComponent } from './pages/movie-list/movie-list.component';
+import { Component } from '@angular/core';
+import { MovieDetailComponent } from './pages/movie-detail/movie-detail.component';
 
 export const routes: Route[] = [
   { path: '', component: HomeComponent },
@@ -12,5 +14,6 @@ export const routes: Route[] = [
   { path: 'signup', component: SignupComponent },
   { path: 'choose-plan', component: ChoosePlanComponent },
   { path: 'username', component: UsernameComponent },
-  { path: 'movie-list', component:MovieListComponent},
+  { path: 'movie-list', component: MovieListComponent },
+  { path: 'movie/:id', component: MovieDetailComponent },
 ];

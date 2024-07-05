@@ -1,0 +1,12 @@
+<app-navbar></app-navbar>
+<div class="movie-detail">
+  <img
+    [src]="'https://image.tmdb.org/t/p/w500' + movie?.poster_path"
+    alt="{{ movie?.title }}"
+  />
+  <h2>{{ movie?.title }}</h2>
+  <p>IMDB id:{{ movie?.imdb_id }}</p>
+  <p>Rating:{{movie?.vote_average}}</p>
+
+  <p>{{ movie?.overview }}</p>
+</div>
