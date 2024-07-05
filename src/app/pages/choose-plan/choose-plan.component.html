@@ -8,36 +8,49 @@
     <li>✓ Change or cancel your plan anytime.</li>
   </ul>
 
-  <div class="plans">
-    <div class="Name">
-      <h4>Plan</h4>
-      <p class="price">Monthly Price</p>
-      <p class="video-quality">Video Quality</p>
-      <p class="resolution">Resolution</p>
-      <p class="devices">Wathc on your TV, computer, mobile phone and tablet</p>
-    </div>
-    <div class="plan basic">
-      <h4>Basic</h4>
-      <p class="price">$9.99</p>
-      <p class="video-quality">Good</p>
-      <p class="resolution">480p</p>
-      <p class="devices">✓</p>
-    </div>
-    <div class="plan standard">
-      <h4>Standard</h4>
-      <p class="price">$15.49</p>
-      <p class="video-quality">Better</p>
-      <p class="resolution">1080p</p>
-      <p class="devices">✓</p>
-    </div>
-    <div class="plan premium">
-      <h4>Premium</h4>
-      <p class="price">$19.99</p>
-      <p class="video-quality">Best</p>
-      <p class="resolution">4K + HDR</p>
-      <p class="devices">✓</p>
-    </div>
-  </div>
+  <form [formGroup]="signupService.signupForm" (ngSubmit)="onSubmit()">
+    <div class="plans">
+      <div class="Name">
+        <h4>Plan</h4>
+        <p class="price">Monthly Price</p>
+        <p class="video-quality">Video Quality</p>
+        <p class="resolution">Resolution</p>
+        <p class="devices">Watch on your TV, computer, mobile phone, and tablet</p>
+      </div>
 
-  <button class="next-btn" (click)="toUsername()">Next</button>
+      <div class="plan basic">
+        <input type="radio" id="basic" formControlName="plan" value="basic">
+        <label for="basic">
+          <h4>Basic</h4>
+          <p class="price">$9.99</p>
+          <p class="video-quality">Good</p>
+          <p class="resolution">480p</p>
+          <p class="devices">✓</p>
+        </label>
+      </div>
+
+      <div class="plan standard">
+        <input type="radio" id="standard" formControlName="plan" value="standard">
+        <label for="standard">
+          <h4>Standard</h4>
+          <p class="price">$15.49</p>
+          <p class="video-quality">Better</p>
+          <p class="resolution">1080p</p>
+          <p class="devices">✓</p>
+        </label>
+      </div>
+
+      <div class="plan premium">
+        <input type="radio" id="premium" formControlName="plan" value="premium">
+        <label for="premium">
+          <h4>Premium</h4>
+          <p class="price">$19.99</p>
+          <p class="video-quality">Best</p>
+          <p class="resolution">4K + HDR</p>
+          <p class="devices">✓</p>
+        </label>
+      </div>
+    </div>
+    <button class="next-btn" type="submit" [disabled]="signupService.signupForm.get('plan')?.invalid">Next</button>
+  </form>
 </div>
