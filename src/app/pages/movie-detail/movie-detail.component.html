@@ -1,12 +1,52 @@
 <app-navbar></app-navbar>
 <div class="movie-detail">
-  <img
+  <!-- <img
     [src]="'https://image.tmdb.org/t/p/w500' + movie?.poster_path"
     alt="{{ movie?.title }}"
-  />
-  <h2>{{ movie?.title }}</h2>
-  <p>IMDB id:{{ movie?.imdb_id }}</p>
-  <p>Rating:{{movie?.vote_average}}</p>
+  /> -->
 
-  <p>{{ movie?.overview }}</p>
+  <div class="left">
+    <h2>{{ movie?.title }}</h2>
+    <div class="info">
+      <p>IMDB id: {{ movie?.imdb_id }}</p>
+      <p>
+        Rating: {{ movie?.vote_average }} | Reviews: {{ movie?.vote_count }}
+      </p>
+      <p>Genres: {{ genres }}</p>
+      <p>{{ length }} mins</p>
+      <p>{{ year }}</p>
+    </div>
+
+    <a *ngIf="movie?.homepage" [href]="movie?.homepage">Vist Homepage</a>
+    <p>{{ movie?.overview }}</p>
+
+    <div class="buttons">
+      <button mat-raised-button disabled>Play Now</button>
+      <button mat-flat-button>Trailer</button>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="previews">
+      <h3>Previews</h3>
+      <div class="images">
+        <div *ngFor="let preview of previews">
+          <img
+            [src]="'https://image.tmdb.org/t/p/w500' + preview.file_path"
+            alt="Poster"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="casts">
+      <h3>Casts</h3>
+      <div class="images">
+        <div *ngFor="let cast of casts" class="actor">
+          <img [src]="'https://image.tmdb.org/t/p/w500' + cast.profile_path" />
+          <p>{{ cast.name }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
