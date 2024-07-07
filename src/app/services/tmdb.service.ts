@@ -11,8 +11,8 @@ export class TmdbService {
   private apiUrl = 'https://api.themoviedb.org/3';
   private apiKey = '775ab391c192a98f82f683c7653a4b59';
 
-  getPopularMovies(): Observable<any> {
-    const url = `${this.apiUrl}/movie/popular?api_key=${this.apiKey}`;
+  getPopularMovies(page: number = 1): Observable<any> {
+    const url = `${this.apiUrl}/movie/popular?api_key=${this.apiKey}&page=${page}`;
     return this.http.get(url);
   }
 
