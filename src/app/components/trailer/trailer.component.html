@@ -1,0 +1,8 @@
+    <div mat-dialog-content>
+      <youtube-player [videoId]="id"></youtube-player>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="prevVideo()">Previous</button>
+      <button mat-button (click)="nextVideo()">Next</button>
+      <button mat-button mat-dialog-close>Close</button>
+    </div>

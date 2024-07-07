@@ -1,30 +1,33 @@
 .movie-detail{
     display:flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-}
-
-h2{
-    padding-top: 10%;
+    justify-content: center;
+    align-items: flex-end;
+    position:absolute;
+    margin-bottom: 100px;
+    bottom:0;
+    width:100%;
 }
 
 .left{
-    flex: 1, 1, 45%;
     width:50%;
     display: flex;
     flex-direction: column;
-    margin:20px;
+    margin-left: 5%;
     background-color: red;
 }
 
 .right{
-    flex: 1, 1, 45%;
     width: 50%;
     display:flex;
     flex-direction: column;
     margin:20px;
     background-color: pink;
 
+    .previews{
+        img{
+            height:150px;
+        }
+    }
     .images {
         display: flex;
         flex-direction: row;
@@ -37,6 +40,3 @@ img{
     border-radius: 15px;
     margin-right: 10px;
 }
-
-
-

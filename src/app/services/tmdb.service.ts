@@ -30,4 +30,9 @@ export class TmdbService {
     const url = `${this.apiUrl}/movie/${id}/credits?api_key=${this.apiKey}`;
     return this.http.get(url);
   }
+
+  getMovieVideos(id: number): Observable<any> {
+    const url = `${this.apiUrl}/movie/${id}/videos?api_key=${this.apiKey}`;
+    return this.http.get(url);
+  }
 }
