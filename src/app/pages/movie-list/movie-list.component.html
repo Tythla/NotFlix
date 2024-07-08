@@ -6,8 +6,10 @@
   <app-navbar></app-navbar>
   <div class="container">
     <h1>Now Trending</h1>
-    <div *cdkVirtualFor="let movie of popularMovies" class="list">
-      <app-movie-item [movie]="movie" class="movie-item"></app-movie-item>
+    <div class="list">
+      <div *cdkVirtualFor="let movie of popularMovies" class="movie-item-wrapper">
+        <app-movie-item [movie]="movie" class="movie-item"></app-movie-item>
+      </div>
     </div>
   </div>
 </cdk-virtual-scroll-viewport>
