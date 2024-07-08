@@ -1,25 +1,54 @@
-import { Component } from '@angular/core';
-import { TmdbService } from '../../services/tmdb.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { CdkVirtualScrollViewport, ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import { MovieItemComponent } from '../../components/movie-item/movie-item.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { TmdbService } from '../../services/tmdb.service';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-movie-list',
   standalone: true,
-  imports: [CommonModule,MovieItemComponent,NavbarComponent],
+  imports: [
+    CommonModule,
+    MovieItemComponent,
+    NavbarComponent,
+    CdkVirtualScrollViewport,
+    ScrollingModule,
+  ],
   templateUrl: './movie-list.component.html',
-  styleUrl: './movie-list.component.scss',
+  styleUrls: ['./movie-list.component.scss'],
 })
-export class MovieListComponent {
+export class MovieListComponent implements OnInit {
+  @ViewChild(CdkVirtualScrollViewport) viewport!: CdkVirtualScrollViewport;
+  popularMovies: any[] = [];
+  currentPage: number = 1;
+  isLoading: boolean = false;
+
   constructor(private tmdb: TmdbService) {}
 
-  popularMovies: any[] = [];
-
   ngOnInit() {
-    this.tmdb.getPopularMovies().subscribe((response: any) => {
-      this.popularMovies = response.results;
-    });
-    console.log('ngOnInit finished');
+    this.loadMoreMovies();
+  }
+
+  loadMoreMovies() {
+    if (this.isLoading) return;
+
+    this.isLoading = true;
+    this.tmdb
+      .getPopularMovies(this.currentPage)
+      .pipe(finalize(() => (this.isLoading = false)))
+      .subscribe((response: any) => {
+        this.popularMovies = [...this.popularMovies, ...response.results];
+        this.currentPage++;
+      });
+  }
+
+  onScroll() {
+    const end = this.viewport.getRenderedRange().end;
+    const total = this.viewport.getDataLength();
+    if (end === total) {
+      this.loadMoreMovies();
+    }
   }
 }
