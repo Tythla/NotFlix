@@ -1,9 +1,13 @@
-<app-navbar></app-navbar>
-<div class="container">
+<cdk-virtual-scroll-viewport
+  [itemSize]="200"
+  class="movie-list"
+  (scrolledIndexChange)="onScroll()"
+>
+  <app-navbar></app-navbar>
+  <div class="container">
     <h1>Now Trending</h1>
-    <cdk-virtual-scroll-viewport [itemSize]="200" class="movie-list" (scrolledIndexChange)="onScroll()">
-        <div *cdkVirtualFor="let movie of popularMovies">
-            <app-movie-item [movie]="movie"></app-movie-item>
-        </div>
-    </cdk-virtual-scroll-viewport>
-</div>
+    <div *cdkVirtualFor="let movie of popularMovies" class="list">
+      <app-movie-item [movie]="movie" class="movie-item"></app-movie-item>
+    </div>
+  </div>
+</cdk-virtual-scroll-viewport>

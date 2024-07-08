@@ -13,12 +13,17 @@
     margin-top: 5%;
     background-color: grey;
     perspective: 1000px;
-    height: calc(100vh - 5%);
-    overflow: hidden;
+    height: 100%;
 }
 
 cdk-virtual-scroll-viewport {
     height: 100%;
     width: 100%;
-    display: block;
+    display: flex;
+}
+
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: blue;
 }
