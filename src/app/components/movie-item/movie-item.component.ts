@@ -1,11 +1,12 @@
 import { NgStyle } from '@angular/common';
 import { Component, Input, OnInit, Renderer2, ElementRef, HostListener } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { NgTiltModule } from '@geometricpanda/angular-tilt';
 
 @Component({
   selector: 'app-movie-item',
   standalone: true,
-  imports: [NgStyle, RouterModule],
+  imports: [NgStyle, RouterModule, NgTiltModule],
   templateUrl: './movie-item.component.html',
   styleUrls: ['./movie-item.component.scss'],
 })
