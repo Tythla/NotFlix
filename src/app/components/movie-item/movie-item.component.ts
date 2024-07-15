@@ -2,11 +2,12 @@ import { NgStyle } from '@angular/common';
 import { Component, Input, OnInit, Renderer2, ElementRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NgTiltModule } from '@geometricpanda/angular-tilt';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-movie-item',
   standalone: true,
-  imports: [NgStyle, RouterModule, NgTiltModule],
+  imports: [NgStyle, RouterModule, NgTiltModule, MatButtonModule],
   templateUrl: './movie-item.component.html',
   styleUrls: ['./movie-item.component.scss'],
 })

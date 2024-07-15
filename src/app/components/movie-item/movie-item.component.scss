@@ -67,5 +67,14 @@
             -webkit-line-clamp: 5;
             -webkit-box-orient: vertical;
         }
+
+        .button-container {
+            align-self: flex-start;
+            margin-top: auto;
+        }
+
+        button {
+            width: auto;
+        }
     }
 }

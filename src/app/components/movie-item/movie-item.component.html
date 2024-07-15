@@ -6,6 +6,8 @@
     <div class="movie-details">
         <h2>{{movie.title}}</h2>
         <p>{{movie.overview}}</p>
-        <a [routerLink]="['/movie', movie.id]">View Details</a>
+        <div class="button-container">
+            <button mat-flat-button [routerLink]="['/movie', movie.id]">Details</button>
+        </div>
     </div>
 </div>
