@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CdkVirtualScrollViewport, ScrollingModule } from '@angular/cdk/scrolling';
+import {
+  CdkVirtualScrollViewport,
+  ScrollingModule,
+} from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import { MovieItemComponent } from '../../components/movie-item/movie-item.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
@@ -39,6 +42,7 @@ export class MovieListComponent implements OnInit {
       .getPopularMovies(this.currentPage)
       .pipe(finalize(() => (this.isLoading = false)))
       .subscribe((response: any) => {
+        console.log('Movie response page:', response.page);
         this.popularMovies = [...this.popularMovies, ...response.results];
         this.currentPage++;
       });

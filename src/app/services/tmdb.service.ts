@@ -8,31 +8,30 @@ import { Observable } from 'rxjs';
 export class TmdbService {
   constructor(private http: HttpClient) {}
 
-  private apiUrl = 'https://api.themoviedb.org/3';
-  private apiKey = '775ab391c192a98f82f683c7653a4b59';
+  private apiUrl = 'http://localhost:3000/movies';
 
   getPopularMovies(page: number = 1): Observable<any> {
-    const url = `${this.apiUrl}/movie/popular?api_key=${this.apiKey}&page=${page}`;
+    const url = `${this.apiUrl}/popular?page=${page}`;
     return this.http.get(url);
   }
 
   getMovieDetail(id: number): Observable<any> {
-    const url = `${this.apiUrl}/movie/${id}?api_key=${this.apiKey}`;
+    const url = `${this.apiUrl}/${id}`;
     return this.http.get(url);
   }
 
   getMovieImages(id: number): Observable<any> {
-    const url = `${this.apiUrl}/movie/${id}/images?api_key=${this.apiKey}`;
+    const url = `${this.apiUrl}/${id}/images`;
     return this.http.get(url);
   }
 
   getMovieCasts(id: number): Observable<any> {
-    const url = `${this.apiUrl}/movie/${id}/credits?api_key=${this.apiKey}`;
+    const url = `${this.apiUrl}/${id}/casts`;
     return this.http.get(url);
   }
 
   getMovieVideos(id: number): Observable<any> {
-    const url = `${this.apiUrl}/movie/${id}/videos?api_key=${this.apiKey}`;
+    const url = `${this.apiUrl}/${id}/videos`;
     return this.http.get(url);
   }
 }
