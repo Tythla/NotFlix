@@ -17,7 +17,7 @@ import { TrailerComponent } from '../../components/trailer/trailer.component';
     CommonModule,
     MatButtonModule,
     YouTubePlayerModule,
-    TrailerComponent
+    TrailerComponent,
   ],
   templateUrl: './movie-detail.component.html',
   styleUrl: './movie-detail.component.scss',
@@ -31,7 +31,13 @@ export class MovieDetailComponent {
   year: string = '';
   videos: any[] = [];
 
-  constructor(private router: ActivatedRoute, private tmdb: TmdbService, private dialog: MatDialog) {}
+  backgroundImageUrl: string = '';
+
+  constructor(
+    private router: ActivatedRoute,
+    private tmdb: TmdbService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     const id = this.router.snapshot.paramMap.get('id');
@@ -46,12 +52,17 @@ export class MovieDetailComponent {
       });
       this.tmdb.getMovieImages(+id).subscribe((data) => {
         this.previews = data.backdrops;
+        if (this.previews.length > 0) {
+          this.backgroundImageUrl = `https://image.tmdb.org/t/p/w500${this.previews[0].file_path}`;
+        }
       });
       this.tmdb.getMovieCasts(+id).subscribe((data) => {
         this.casts = data.cast;
       });
       this.tmdb.getMovieVideos(+id).subscribe((data) => {
-        this.videos = data.results.filter((video:any) => video.site === 'YouTube');
+        this.videos = data.results.filter(
+          (video: any) => video.site === 'YouTube'
+        );
       });
     }
   }
@@ -62,6 +73,6 @@ export class MovieDetailComponent {
       // width: '100vw',
       maxWidth: '100vw',
       // height:'50vh'
-    })
+    });
   }
 }
