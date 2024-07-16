@@ -8,7 +8,7 @@
     <li>✓ Change or cancel your plan anytime.</li>
   </ul>
 
-  <form [formGroup]="signupService.signupForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     <div class="plans">
       <div class="Name">
         <h4>Plan</h4>
@@ -51,6 +51,6 @@
         </label>
       </div>
     </div>
-    <button class="next-btn" type="submit" [disabled]="signupService.signupForm.get('plan')?.invalid">Next</button>
+    <button class="next-btn" type="submit" [disabled]="signupForm.get('plan')?.invalid">Next</button>
   </form>
 </div>
