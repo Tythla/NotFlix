@@ -9,12 +9,18 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../../services/login.service';
-import { FooterComponent } from "../../components/footer/footer.component";
+import { FooterComponent } from '../../components/footer/footer.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterModule, NavbarComponent, ReactiveFormsModule, CommonModule, FooterComponent],
+  imports: [
+    RouterModule,
+    NavbarComponent,
+    ReactiveFormsModule,
+    CommonModule,
+    FooterComponent,
+  ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
@@ -45,6 +51,7 @@ export class LoginComponent implements OnInit {
           console.log('Login successful', response);
           localStorage.setItem('token', response.token);
           localStorage.setItem('role', JSON.stringify(response.user.role));
+          localStorage.setItem('user', JSON.stringify(response.user.username));
           this.router.navigate(['movie-list']);
         },
         (error) => {

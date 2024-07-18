@@ -1,9 +1,14 @@
 <div>
-    <nav>
-        <a (click)="toHome()">
-            <img src = "/notflix_logo.png">
-        </a>
-
-        <button (click)="toLogin()">Log In</button>
-    </nav>
+  <nav>
+    <a (click)="toHome()">
+      <img src="/notflix_logo.png">
+    </a>
+    <ng-container *ngIf="isLoggedIn(); else notLoggedIn">
+      <span>Welcome, {{ user }}</span>
+      <button (click)="logout()">Log Out</button>
+    </ng-container>
+    <ng-template #notLoggedIn>
+      <button (click)="toLogin()">Log In</button>
+    </ng-template>
+  </nav>
 </div>
