@@ -12,6 +12,7 @@
                 <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
                     <small *ngIf="signupForm.get('email')?.errors?.['required']">Email is required.</small>
                     <small *ngIf="signupForm.get('email')?.errors?.['email']">Enter a valid email.</small>
+                    <small *ngIf="signupForm.get('email')?.errors?.['emailExists']">Email already exists.</small>
                 </div>
             </div>
 

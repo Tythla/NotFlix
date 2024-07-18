@@ -24,4 +24,8 @@ export class SignupService {
       ...data,
     });
   }
+
+  checkEmailExists(email: string): Observable<any> {
+    return this.http.post('http://localhost:3000/auth/check-email', { email });
+  }
 }

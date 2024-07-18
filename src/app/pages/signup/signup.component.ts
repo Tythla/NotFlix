@@ -7,9 +7,13 @@ import {
   FormBuilder,
   FormGroup,
   Validators,
+  AsyncValidatorFn,
+  AbstractControl,
+  ValidationErrors
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from "../../components/footer/footer.component";
+import { catchError, map, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -27,7 +31,7 @@ export class SignupComponent {
     private signupService: SignupService
   ) {
     this.signupForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email],[this.emailValidator()]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       plan: ['', Validators.required],
       username: ['', [Validators.required, Validators.maxLength(10)]],
@@ -44,5 +48,16 @@ export class SignupComponent {
       this.signupService.updateForm(this.signupForm.value);
       this.router.navigate(['choose-plan']);
     }
+  }
+
+  emailValidator(): AsyncValidatorFn{
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+      return this.signupService.checkEmailExists(control.value).pipe(
+        map((response) => {
+          return response.exists ? { emailExists: true } : null;
+        }),
+        catchError(() => of(null))
+      );
+    };
   }
 }
