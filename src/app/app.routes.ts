@@ -10,10 +10,42 @@ import { MovieDetailComponent } from './pages/movie-detail/movie-detail.componen
 
 export const routes: Route[] = [
   { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'choose-plan', component: ChoosePlanComponent },
-  { path: 'username', component: UsernameComponent },
-  { path: 'movie-list', component: MovieListComponent },
-  { path: 'movie/:id', component: MovieDetailComponent },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./pages/login/login.component').then((c) => c.LoginComponent),
+  },
+  {
+    path: 'signup',
+    loadComponent: () =>
+      import('./pages/signup/signup.component').then((c) => c.SignupComponent),
+  },
+  {
+    path: 'choose-plan',
+    loadComponent: () =>
+      import('./pages/choose-plan/choose-plan.component').then(
+        (c) => c.ChoosePlanComponent
+      ),
+  },
+  {
+    path: 'username',
+    loadComponent: () =>
+      import('./pages/username/username.component').then(
+        (c) => c.UsernameComponent
+      ),
+  },
+  {
+    path: 'movie-list',
+    loadComponent: () =>
+      import('./pages/movie-list/movie-list.component').then(
+        (c) => c.MovieListComponent
+      ),
+  },
+  {
+    path: 'movie/:id',
+    loadComponent: () =>
+      import('./pages/movie-detail/movie-detail.component').then(
+        (c) => c.MovieDetailComponent
+      ),
+  },
 ];

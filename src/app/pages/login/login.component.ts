@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         (response) => {
           console.log('Login successful', response);
           localStorage.setItem('token', response.token);
-          localStorage.setItem('user', JSON.stringify(response.user));
+          localStorage.setItem('role', JSON.stringify(response.user.role));
           this.router.navigate(['movie-list']);
         },
         (error) => {
