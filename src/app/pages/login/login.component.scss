@@ -3,9 +3,10 @@
 }
 .background{
     background-image: url('/welcome.jpg');
-    height: 600px;
+    height: 100vh;
     text-align: center;
     width:100%;
+    background-size: cover;
 }
 .login {
     background-color: rgba(0, 0, 0, 0.75);

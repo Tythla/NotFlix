@@ -7,6 +7,7 @@ import { UsernameComponent } from './pages/username/username.component';
 import { MovieListComponent } from './pages/movie-list/movie-list.component';
 import { Component } from '@angular/core';
 import { MovieDetailComponent } from './pages/movie-detail/movie-detail.component';
+import { AuthGuard } from './auth.guard';
 
 export const routes: Route[] = [
   { path: '', component: HomeComponent },
@@ -40,6 +41,7 @@ export const routes: Route[] = [
       import('./pages/movie-list/movie-list.component').then(
         (c) => c.MovieListComponent
       ),
+    canActivate:[AuthGuard],
   },
   {
     path: 'movie/:id',
