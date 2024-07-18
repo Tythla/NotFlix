@@ -9,11 +9,12 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../../services/login.service';
+import { FooterComponent } from "../../components/footer/footer.component";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterModule, NavbarComponent, ReactiveFormsModule, CommonModule],
+  imports: [RouterModule, NavbarComponent, ReactiveFormsModule, CommonModule, FooterComponent],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })

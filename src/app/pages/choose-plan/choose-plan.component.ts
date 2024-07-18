@@ -9,11 +9,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FooterComponent } from "../../components/footer/footer.component";
 
 @Component({
   selector: 'app-choose-plan',
   standalone: true,
-  imports: [RouterModule, NavbarComponent, ReactiveFormsModule, CommonModule],
+  imports: [RouterModule, NavbarComponent, ReactiveFormsModule, CommonModule, FooterComponent],
   templateUrl: './choose-plan.component.html',
   styleUrls: ['./choose-plan.component.scss'],
 })
