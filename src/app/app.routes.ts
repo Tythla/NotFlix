@@ -74,6 +74,7 @@ export const routes: Route[] = [
       import('./pages/movie-detail/movie-detail.component').then(
         (c) => c.MovieDetailComponent
       ),
+    canActivate: [AuthGuard],
     resolve: { movie: MovieDetailResolver },
   },
 ];
