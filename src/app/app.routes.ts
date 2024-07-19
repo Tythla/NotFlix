@@ -9,6 +9,18 @@ import { Component } from '@angular/core';
 import { MovieDetailComponent } from './pages/movie-detail/movie-detail.component';
 import { AuthGuard } from './auth.guard';
 
+const registerRoutes: Route[] = [
+  {
+    path: '',
+    component: SignupComponent,
+    children: [
+      { path: 'choose-plan', component: ChoosePlanComponent },
+      { path: 'username', component: UsernameComponent },
+
+    ],
+  },
+];
+
 export const routes: Route[] = [
   { path: '', component: HomeComponent },
   {
@@ -35,13 +47,24 @@ export const routes: Route[] = [
         (c) => c.UsernameComponent
       ),
   },
+
+  //Test
+  // {
+  //   path: 'signup',
+  //   loadComponent: () =>
+  //     import('./pages/signup/signup.component').then(
+  //       (c) => c.SignupComponent
+  //     ),
+  //   loadChildren: () => registerRoutes,
+  // },
+
   {
     path: 'movie-list',
     loadComponent: () =>
       import('./pages/movie-list/movie-list.component').then(
         (c) => c.MovieListComponent
       ),
-    canActivate:[AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'movie/:id',
