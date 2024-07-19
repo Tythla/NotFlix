@@ -7,7 +7,7 @@
         <h2>{{movie.title}}</h2>
         <p>{{movie.overview}}</p>
         <div class="button-container">
-            <button mat-flat-button [routerLink]="['/movie', movie.id]">Details</button>
+            <button mat-flat-button (click)="navigateToDetail()">Details</button>
         </div>
     </div>
 </div>

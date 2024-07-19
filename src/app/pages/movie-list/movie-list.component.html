@@ -9,7 +9,7 @@
     <h1>Now Trending</h1>
     <div class="list">
       <div *cdkVirtualFor="let movie of popularMovies" class="movie-item-wrapper">
-        <app-movie-item [movie]="movie" class="movie-item"></app-movie-item>
+        <app-movie-item [movie]="movie" class="movie-item" (detailClick)="navigateToDetail(movie.id)"></app-movie-item>
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 import { NgStyle } from '@angular/common';
-import { Component, Input, OnInit, Renderer2, ElementRef } from '@angular/core';
+import { Component, Input, OnInit, Renderer2, ElementRef, Output, EventEmitter } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NgTiltModule } from '@geometricpanda/angular-tilt';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class MovieItemComponent implements OnInit {
   @Input() movie: any;
+  @Output() detailClick = new EventEmitter<void>();
 
   constructor(private renderer: Renderer2, private el: ElementRef) {}
 
@@ -25,5 +26,9 @@ export class MovieItemComponent implements OnInit {
         `url('https://image.tmdb.org/t/p/w500${this.movie.poster_path}')`
       );
     }
+  }
+
+  navigateToDetail() {
+    this.detailClick.emit();
   }
 }
