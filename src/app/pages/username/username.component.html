@@ -11,6 +11,7 @@
         <div *ngIf="signupForm.get('username')?.invalid && signupForm.get('username')?.touched">
           <small *ngIf="signupForm.get('username')?.errors?.['required']">Username is required.</small>
           <small *ngIf="signupForm.get('username')?.errors?.['maxlength']">Username needs to be shorter than 10 characters</small>
+          <small *ngIf="signupForm.get('username')?.errors?.['usernameExists']">Username already exists.</small>
         </div>
       </div>
 

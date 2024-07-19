@@ -6,15 +6,24 @@ import {
   FormBuilder,
   FormGroup,
   Validators,
+  AsyncValidatorFn,
+  AbstractControl,
+  ValidationErrors,
 } from '@angular/forms';
 import { SignupService } from '../../services/signup.service';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from "../../components/footer/footer.component";
+import { Observable, map, catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-username',
   standalone: true,
-  imports: [NavbarComponent, ReactiveFormsModule, CommonModule, FooterComponent],
+  imports: [
+    NavbarComponent,
+    ReactiveFormsModule,
+    CommonModule,
+    FooterComponent,
+  ],
   templateUrl: './username.component.html',
   styleUrls: ['./username.component.scss'],
 })
@@ -27,7 +36,11 @@ export class UsernameComponent {
     private signupService: SignupService
   ) {
     this.signupForm = this.fb.group({
-      username: ['', [Validators.required, Validators.maxLength(10)]],
+      username: [
+        '',
+        [Validators.required, Validators.maxLength(10)],
+        [this.usernameValidator()],
+      ],
       api: ['', Validators.required],
     });
   }
@@ -54,7 +67,14 @@ export class UsernameComponent {
     }
   }
 
-  toMovieList() {
-  
+  usernameValidator(): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+      return this.signupService.checkUsernameExists(control.value).pipe(
+        map((response) => {
+          return response.exists ? { usernameExists: true } : null;
+        }),
+        catchError(() => of(null))
+      );
+    };
   }
 }
