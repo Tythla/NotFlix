@@ -8,6 +8,8 @@ import { MovieListComponent } from './pages/movie-list/movie-list.component';
 import { Component } from '@angular/core';
 import { MovieDetailComponent } from './pages/movie-detail/movie-detail.component';
 import { AuthGuard } from './auth.guard';
+import { MovieDetailResolver } from './movie-detail.resolver';
+import { Movie } from './models/movie';
 
 const registerRoutes: Route[] = [
   {
@@ -72,5 +74,6 @@ export const routes: Route[] = [
       import('./pages/movie-detail/movie-detail.component').then(
         (c) => c.MovieDetailComponent
       ),
+    resolve: { movie: MovieDetailResolver },
   },
 ];

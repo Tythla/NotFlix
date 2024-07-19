@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { TrailerComponent } from '../../components/trailer/trailer.component';
+import { Movie } from '../../models/movie';
 
 @Component({
   selector: 'app-movie-detail',
@@ -23,7 +24,7 @@ import { TrailerComponent } from '../../components/trailer/trailer.component';
   styleUrl: './movie-detail.component.scss',
 })
 export class MovieDetailComponent {
-  movie: any;
+  movie: Movie | null = null;
   previews: any[] = [];
   casts: any[] = [];
   genres: string = '';
@@ -34,37 +35,36 @@ export class MovieDetailComponent {
   backgroundImageUrl: string = '';
 
   constructor(
-    private router: ActivatedRoute,
+    private route: ActivatedRoute,
     private tmdb: TmdbService,
     private dialog: MatDialog
   ) {}
 
   ngOnInit() {
-    const id = this.router.snapshot.paramMap.get('id');
-    if (id) {
-      this.tmdb.getMovieDetail(+id).subscribe((data) => {
-        this.movie = data;
-        this.genres = data.genres
-          .map((genres: { name: any }) => genres.name)
-          .join(', ');
-        this.length = data.runtime;
-        this.year = data.release_date.substring(0, 4);
-      });
-      this.tmdb.getMovieImages(+id).subscribe((data) => {
-        this.previews = data.backdrops;
-        if (this.previews.length > 0) {
-          this.backgroundImageUrl = `https://image.tmdb.org/t/p/w500${this.previews[0].file_path}`;
-        }
-      });
-      this.tmdb.getMovieCasts(+id).subscribe((data) => {
-        this.casts = data.cast;
-      });
-      this.tmdb.getMovieVideos(+id).subscribe((data) => {
-        this.videos = data.results.filter(
-          (video: any) => video.site === 'YouTube'
-        );
-      });
-    }
+    this.route.data.subscribe((data) => {
+      this.movie = data['movie'] as Movie | null;
+
+      if (this.movie) {
+        this.genres = this.movie.genres.map((genre) => genre.name).join(', ');
+        this.length = this.movie.runtime;
+        this.year = this.movie.release_date.substring(0, 4);
+
+        this.tmdb.getMovieImages(this.movie.id).subscribe((data) => {
+          this.previews = data.backdrops;
+          if (this.previews.length > 0) {
+            this.backgroundImageUrl = `https://image.tmdb.org/t/p/w500${this.previews[0].file_path}`;
+          }
+        });
+        this.tmdb.getMovieCasts(this.movie.id).subscribe((data) => {
+          this.casts = data.cast;
+        });
+        this.tmdb.getMovieVideos(this.movie.id).subscribe((data) => {
+          this.videos = data.results.filter(
+            (video: any) => video.site === 'YouTube'
+          );
+        });
+      }
+    });
   }
 
   trailerDialog(index: number) {
