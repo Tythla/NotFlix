@@ -38,6 +38,7 @@ export class MovieListComponent implements OnInit, AfterViewInit, OnDestroy {
   isLoading: boolean = false;
   private targetScrollPosition: number = 0;
   private subscriptions: Subscription = new Subscription();
+  private isReturningFromDetail: boolean = false;
 
   constructor(
     private tmdb: TmdbService,
@@ -50,12 +51,11 @@ export class MovieListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    // Retrieve the target scroll position from the scroll service after view is initialized
-    this.targetScrollPosition = this.scrollService.getScrollPosition();
-    console.log('afterViewInit');
-    // this.viewport.elementScrolled().subscribe(() => this.onScroll());
-    // Restore the scroll position once the view is initialized
-    this.checkAndRestoreScrollPosition();
+    this.isReturningFromDetail = this.scrollService.getScrollPosition() > 0;
+    if (this.isReturningFromDetail) {
+      this.targetScrollPosition = this.scrollService.getScrollPosition();
+      this.checkAndRestoreScrollPosition();
+    }
   }
 
   ngOnDestroy() {
@@ -70,35 +70,23 @@ export class MovieListComponent implements OnInit, AfterViewInit, OnDestroy {
       .getPopularMovies(this.currentPage)
       .pipe(finalize(() => (this.isLoading = false)))
       .subscribe((response: any) => {
-        console.log('Movie response page:', response.page);
         this.popularMovies = [...this.popularMovies, ...response.results];
         this.currentPage++;
-        if (this.viewport.measureScrollOffset() > this.scrollService.getScrollPosition()) {
-          console.log('triggered');
-          this.scrollService.setScrollPosition(
-            this.viewport.measureScrollOffset()
-          );
+        if (this.isReturningFromDetail) {
+          this.checkAndRestoreScrollPosition();
         }
-        this.checkAndRestoreScrollPosition();
       });
   }
 
   checkAndRestoreScrollPosition() {
-    console.log('checked');
-    this.scrollService.setScrollPosition(this.viewport.measureScrollOffset());  
-    console.log('target: ', this.targetScrollPosition);
-  setTimeout(() => {
-    if (
-      this.viewport.measureScrollOffset() < this.targetScrollPosition &&
-      !this.isLoading
-    ) {
-      console.log('working');
-      this.viewport.scrollToOffset(this.targetScrollPosition);
-      this.loadMoreMovies();
-    } else {
-      this.viewport.scrollToOffset(this.targetScrollPosition);
-    }
-  }, 0);
+    setTimeout(() => {
+      if (
+        this.viewport.measureScrollOffset() < this.targetScrollPosition &&
+        !this.isLoading
+      ) {
+        this.viewport.scrollToOffset(this.targetScrollPosition);
+      }
+    }, 0);
   }
 
   onScroll() {
@@ -107,12 +95,10 @@ export class MovieListComponent implements OnInit, AfterViewInit, OnDestroy {
     if (end === total) {
       this.loadMoreMovies();
     }
-    // Save the scroll position when scrolling
-    // this.scrollService.setScrollPosition(this.viewport.measureScrollOffset());
+    this.scrollService.setScrollPosition(this.viewport.measureScrollOffset());
   }
 
   navigateToDetail(movieId: number) {
-    // Save the scroll position before navigating to the detail page
     this.scrollService.setScrollPosition(this.viewport.measureScrollOffset());
     this.router.navigate(['/movie', movieId]);
   }
